@@ -1,0 +1,35 @@
+{
+  "name": "teams",
+  "version": "1.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --linux",
+    "build:patch": "node update-version.js --versionType=patch && npm run build",
+    "build:minor": "node update-version.js --versionType=minor && npm run build",
+    "build:major": "node update-version.js --versionType=major && npm run build"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "description": "A simple app to open multiple instances of Microsoft Teams",
+  "devDependencies": {
+    "electron": "^34.1.0",
+    "electron-builder": "^25.1.8"
+  },
+  "author": {
+    "name": "Gabriel Palermo",
+    "email": "rodrigues.palermo@outlook.com"
+  },
+  "homepage": "https://github.com/seu-usuario/meu-app-electron",
+  "build": {
+    "appId": "com.teams.app",
+    "productName": "Microsoft Teams Double Instance",
+    "linux": {
+      "target": "deb",
+      "category": "Utility"
+    }
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
