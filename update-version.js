@@ -1,17 +1,18 @@
-const fs = require("fs");
-const path = require("path");
-const yargs = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
+import fs from "fs";
 
-// Função para atualizar a versão
+import path from "path";
+
+import yargs from "yargs/yargs";
+
+import {hideBin} from "yargs/helpers";
+
+
 function updateVersion(versionType) {
   const packageJsonPath = path.join(__dirname, "package.json");
   const packageJson = require(packageJsonPath);
 
-  // Divide a versão atual em major, minor e patch
   let [major, minor, patch] = packageJson.version.split(".").map(Number);
 
-  // Atualiza a versão com base no tipo (major, minor ou patch)
   switch (versionType) {
     case "major":
       major += 1;
@@ -32,14 +33,12 @@ function updateVersion(versionType) {
       process.exit(1);
   }
 
-  // Atualiza a versão no package.json
   packageJson.version = `${major}.${minor}.${patch}`;
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
   console.log(`Versão atualizada para: ${packageJson.version}`);
 }
 
-// Captura o argumento passado (major, minor ou patch)
 const argv = yargs(hideBin(process.argv)).argv;
 const versionType = argv.versionType;
 console.log("versionType", versionType);

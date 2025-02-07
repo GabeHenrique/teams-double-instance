@@ -1,0 +1,6 @@
+directories:
+  buildResources: assets
+files:
+  - "**/*"
+  - "!src/*"
+  - "src/assets/*"

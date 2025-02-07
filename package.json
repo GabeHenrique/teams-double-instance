@@ -1,13 +1,14 @@
 {
   "name": "teams",
-  "version": "1.1.0",
-  "main": "main.js",
+  "version": "1.2.2",
+  "type": "module",
+  "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --linux",
-    "build:patch": "node update-version.js --versionType=patch && npm run build",
-    "build:minor": "node update-version.js --versionType=minor && npm run build",
-    "build:major": "node update-version.js --versionType=major && npm run build"
+    "build:patch": "node src/version-updater/index.js --versionType=patch && npm run build --dir",
+    "build:minor": "node src/version-updater/index.js --versionType=minor && npm run build --dir",
+    "build:major": "node src/version-updater/index.js --versionType=major && npm run build --dir"
   },
   "keywords": [],
   "license": "ISC",
